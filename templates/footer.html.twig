@@ -1,0 +1,35 @@
+
+<footer class="max-w-7xl mx-auto px-4 py-6 text-sm text-gray-500 border-t">
+     © {{ "now"|date("Y") }} Théologie Saint François de Sales
+
+</footer>
+
+
+<script>
+    const button = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+
+    if(button){
+    button.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+    }
+</script>
+<script>
+
+const btn = document.getElementById("formation-btn");
+const dropdown = document.getElementById("formation-dropdown");
+const arrow = document.getElementById("formation-arrow");
+
+btn.addEventListener("click", () => {
+
+    dropdown.classList.toggle("hidden");
+
+    arrow.classList.toggle("rotate-180");
+
+});
+
+</script>
+
+</body>
+</html>

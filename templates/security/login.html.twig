@@ -1,0 +1,67 @@
+{% include 'base.html.twig' %}
+<main class="max-w-7xl mx-auto px-4 py-10">
+        
+
+        {% block body %}
+
+        <div class="max-w-md mx-auto bg-white shadow-lg rounded-xl p-8 mt-12">
+
+            <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">
+                Connexion
+            </h1>
+
+            {% if error %}
+                <div class="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="bg-green-100 text-green-700 p-3 rounded mb-4 text-sm">
+                    Connecté en tant que {{ app.user.userIdentifier }}, 
+                    <a href="{{ path('app_logout') }}" class="underline text-red-600">Déconnexion</a>
+                </div>
+            {% endif %}
+
+            <form method="post" class="space-y-6">
+
+                <div>
+                    <label for="inputEmail" class="block font-medium text-gray-700">Email</label>
+                    <input type="email"
+                        value="{{ last_username }}"
+                        name="email"
+                        id="inputEmail"
+                        required
+                        autofocus
+                        class="w-full mt-1 border-gray-300 rounded-lg shadow-sm focus:ring-red-600 focus:border-red-600">
+                </div>
+
+                <div>
+                    <label for="inputPassword" class="block font-medium text-gray-700">Mot de passe</label>
+                    <input type="password"
+                        name="password"
+                        id="inputPassword"
+                        required
+                        class="w-full mt-1 border-gray-300 rounded-lg shadow-sm focus:ring-red-600 focus:border-red-600">
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center space-x-2 text-gray-600 text-sm">
+                        <input type="checkbox" name="_remember_me" class="rounded border-gray-300">
+                        <span>Se souvenir de moi</span>
+                    </label>
+                    <a href="#" class="text-red-600 text-sm hover:underline">Mot de passe oublié ?</a>
+                </div>
+
+                <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition">
+                    Se connecter
+                </button>
+
+            </form>
+
+        </div>
+
+        {% endblock %}
+</main>

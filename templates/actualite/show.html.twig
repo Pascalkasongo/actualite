@@ -1,0 +1,61 @@
+{% include  'base.html.twig' %}
+<!-- Contenu détaillé -->
+<main class="max-w-5xl mx-auto px-4 py-10">
+
+    <article class="bg-white rounded-2xl shadow-md overflow-hidden">
+
+        {% if actualite.cover %}
+            <img src="{{ asset('uploads/' ~ actualite.cover) }}"
+                 alt="Actualité"
+                 class="w-full h-64 sm:h-96 object-cover">
+        {% endif %}
+
+        <div class="p-6 sm:p-10">
+            <!-- Thème -->
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2 leading-tight">
+                {{ actualite.theme }}
+            </h1>
+
+            <!-- Sous-thème -->
+            <h2 class="text-lg sm:text-xl text-gray-500 font-medium mb-4">
+                {{ actualite.sousTheme }}
+            </h2>
+
+            
+                <p class="prose max-w-none">{{ actualite.contenu|raw }}</p>
+             
+
+            <!-- Retour -->
+            <div class="mt-6">
+                <a href="{{ path('app_home') }}" class="text-red-600 font-semibold hover:underline">
+                     Retour aux actualités
+                </a>
+            </div>
+
+        </div>
+
+      
+    </article>
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-500 mb-6 border-b pb-4">
+
+    <!-- Date -->
+    <div class="flex items-center">
+        <span class="mr-1 font-medium text-gray-600">Publié le :</span>
+        <span class="text-gray-700">
+            {{ actualite.createdAt|date('d M Y') }}
+        </span>
+    </div>
+
+    <!-- Auteur -->
+    {% if actualite.createdBy %}
+    <div class="flex items-center">
+        <span class="mr-1 font-medium text-gray-600"> Par :</span>
+        <span class="text-gray-700">
+            {{ actualite.createdBy.nom }}
+        </span>
+    </div>
+    {% endif %}
+
+</div>
+</main>
+{% include  'footer.html.twig' %}

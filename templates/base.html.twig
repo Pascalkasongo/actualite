@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcadémiaNews</title>
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+</head>
+
+<body class="bg-gray-50">
+
+<!-- Navbar -->
+<nav class="bg-red-600 shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+
+      <div class="flex items-center">
+        <a href="{{ path('app_home') }}" class="text-2xl font-bold text-white">
+          ThéologieActualité
+        </a>
+      </div>
+
+      <div class="hidden md:flex md:items-center md:space-x-6">
+        <a href="{{ path('app_home') }}" class="text-white hover:text-gray-200 font-medium">Accueil</a>
+       {% if app.user and is_granted('ROLE_ADMIN') %}
+          <a href="{{ path('app_actualite_index') }}"
+            class="block text-white font-medium hover:bg-red-600 px-3 py-2 rounded mb-2">
+            Actualités
+          </a>
+        {% endif %}
+     <div class="relative">
+
+    <!-- Bouton -->
+    <button id="formation-btn"
+        class="flex items-center gap-2 text-white font-medium hover:text-gray-200">
+        Formation
+        <svg id="formation-arrow"
+            class="w-4 h-4 transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"/>
+        </svg>
+    </button>
+
+    <!-- Dropdown -->
+    <div id="formation-dropdown"
+        class="absolute left-0 mt-2 w-44 bg-white rounded-lg shadow-lg hidden">
+
+        <a href="{{ path('app_enseignant') }}"
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+            Enseignants
+        </a>
+
+        <a href="#"
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+            Étudiants
+        </a>
+
+    </div>
+
+</div>
+        <a href="https://bibliotheque-udbl.org/pmb/opac_css/" class="text-white hover:text-gray-200 font-medium">Bibliotheque</a>
+        <a href="{{ path('app_apropos') }}" class="text-white hover:text-gray-200 font-medium">À propos</a>
+      </div>
+
+      <!-- mobile -->
+      <div class="flex items-center md:hidden">
+        <button id="mobile-menu-button" class="text-white">
+          ☰
+        </button>
+
+        
+      </div>
+     
+  </div>
+   <!-- Mobile menu -->
+<!-- Mobile menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-red-700">
+
+    <div class="px-4 py-4">
+
+        <a href="{{ path('app_home') }}"
+           class="block text-white font-medium hover:bg-red-600 px-3 py-2 rounded mb-2">
+           Accueil
+        </a>
+
+        {% if app.user and is_granted('ROLE_ADMIN') %}
+          <a href="{{ path('app_actualite_index') }}"
+            class="block text-white font-medium hover:bg-red-600 px-3 py-2 rounded mb-2">
+            Actualités
+          </a>
+        {% endif %}
+
+      <div class="relative">
+
+    <!-- Bouton -->
+    <button id="formation-btn"
+        class="flex items-center gap-2 text-white font-medium hover:text-gray-200">
+        Formation
+        <svg id="formation-arrow"
+            class="w-4 h-4 transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"/>
+        </svg>
+    </button>
+
+    <!-- Dropdown -->
+    <div id="formation-dropdown"
+        class="absolute left-0 mt-2 w-44 bg-white rounded-lg shadow-lg hidden">
+
+        <a href="#"
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+            Enseignants
+        </a>
+
+        <a href="#"
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+            Étudiants
+        </a>
+
+    </div>
+
+</div>
+        <a href="https://bibliotheque-udbl.org/pmb/opac_css/"
+           class="block text-white font-medium hover:bg-red-600 px-3 py-2 rounded mb-2">
+           Bibliothèque
+        </a>
+
+        <a href="{{ path('app_apropos') }}"
+           class="block text-white font-medium hover:bg-red-600 px-3 py-2 rounded">
+           À propos
+        </a>
+
+    </div>
+
+</div>
+</nav>

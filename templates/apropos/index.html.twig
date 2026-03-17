@@ -1,0 +1,139 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+
+<main class="max-w-7xl mx-auto px-4 py-10">
+
+<!-- HERO IMAGE -->
+<div class="relative rounded-2xl overflow-hidden shadow-lg mb-12">
+
+<!-- <img 
+src="{{ asset('img_theologie.jpg') }}" 
+alt="Institut Saint François de Sales"
+class="w-full h-[220px] md:h-[260px] object-cover"
+> -->
+
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+
+<h1 class="text-white text-4xl md:text-5xl font-bold text-center">
+Institut Saint François de Sales
+</h1>
+
+</div>
+
+</div>
+
+
+<section class="bg-white py-8">
+
+<div class="max-w-4xl mx-auto px-6">
+
+<h2 class="text-3xl font-bold text-gray-800 mb-6">
+A propos de l'Institut
+</h2>
+
+
+<p class="text-gray-600 leading-relaxed mb-6">
+L’Institut Saint François de Sales est né de la volonté du Conseil Général de la Congrégation 
+des Salésiens de Don Bosco de créer sur le continent africain deux centres d’études théologiques 
+destinés à accueillir les salésiens africains et missionnaires.
+</p>
+
+<p class="text-gray-600 leading-relaxed mb-10">
+Les efforts du Père <strong>Joseph Van Waelvelde</strong>, premier Président de l’Institut, 
+et du corps académique ont été récompensés par la reconnaissance du 
+<strong>24 octobre 1994</strong> avec l’affiliation à la Faculté de Théologie de 
+l’Université Pontificale Salésienne de Rome.
+</p>
+
+
+<!-- Nature -->
+
+<h2 class="text-2xl font-semibold text-gray-800 mb-4 border-l-4 border-red-600 pl-3">
+Nature
+</h2>
+
+<p class="text-gray-600 leading-relaxed mb-6">
+L’Institut de théologie Saint François de Sales, situé à Lubumbashi dans la province 
+du Haut-Katanga en République Démocratique du Congo, a été érigé après la reconnaissance 
+de la Congrégation pour l’Éducation Catholique le 24 octobre 1994.
+</p>
+
+<p class="text-gray-600 leading-relaxed mb-10">
+Son identité et sa mission se fondent sur un humanisme intégral révélé en Jésus-Christ.
+</p>
+
+
+<!-- Finalités -->
+
+<h2 class="text-2xl font-semibold text-gray-800 mb-4 border-l-4 border-red-600 pl-3">
+Finalités
+</h2>
+
+<div class="space-y-6 text-gray-600 leading-relaxed">
+
+<p>
+L’Institut est un centre d’études supérieures destiné à la préparation des candidats 
+au sacerdoce ministériel.
+</p>
+
+<p>
+Il promeut la formation intellectuelle et la recherche scientifique dans les disciplines théologiques.
+</p>
+
+<p>
+Suivant le système éducatif de Don Bosco, il encourage le leadership et la créativité.
+</p>
+
+<p>
+Toute la formation est orientée vers la formation de véritables pasteurs des âmes.
+</p>
+
+</div>
+
+
+<!-- IMAGE SECTION -->
+
+
+
+<div>
+
+<h3 class="text-xl font-semibold text-gray-800 mb-4">
+Vie académique
+</h3>
+
+<p class="text-gray-600 leading-relaxed">
+L’Institut encourage le dialogue interculturel et interreligieux afin de contribuer à la mission 
+de transformation missionnaire de l’Église dans le monde contemporain.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- BUTTON -->
+
+<div class="mt-10">
+
+<a 
+href="{{ asset('documents/decret_affiliation.png') }}" 
+target="_blank"
+class="inline-block bg-red-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-700 transition"
+>
+
+Voir le décret d'affiliation
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+{% endblock %}
+
+{% include 'footer.html.twig' %}

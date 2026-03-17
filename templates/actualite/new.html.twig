@@ -1,0 +1,46 @@
+{% include  'base.html.twig' %}
+<!-- contenu dynamique -->
+<main class="max-w-3xl mx-auto px-4 py-10">
+
+{% block body %}
+
+<div class="bg-white shadow-lg rounded-xl p-8">
+
+<h1 class="text-2xl font-bold mb-6">
+Créer une actualité
+</h1>
+
+{{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+
+<div>
+    {{ form_label(form.theme, 'Thème', {'label_attr': {'class': 'block font-medium text-gray-700'}}) }}
+    {{ form_widget(form.theme, {'attr': {'class': 'w-full mt-1 border-gray-300 rounded-lg shadow-sm'}}) }}
+</div>
+
+<div>
+    {{ form_label(form.sous_theme, 'Sous thème', {'label_attr': {'class': 'block font-medium text-gray-700'}}) }}
+    {{ form_widget(form.sous_theme, {'attr': {'class': 'w-full mt-1 border-gray-300 rounded-lg shadow-sm'}}) }}
+</div>
+
+<div>
+    {{ form_label(form.cover, 'Image de couverture', {'label_attr': {'class': 'block font-medium text-gray-700'}}) }}
+    {{ form_widget(form.cover, {'attr': {'class': 'w-full mt-1'}}) }}
+</div>
+
+<div>
+    {{ form_label(form.contenu, 'Contenu', {'label_attr': {'class': 'block font-medium text-gray-700'}}) }}
+    {{ form_widget(form.contenu, {'attr': {'class': 'w-full mt-1 border-gray-300 rounded-lg shadow-sm', 'rows': '6'}}) }}
+</div>
+
+<button class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700">
+Publier l'actualité
+</button>
+
+{{ form_end(form) }}
+
+</div>
+
+{% endblock %}
+
+</main>
+{% include  'footer.html.twig' %}
