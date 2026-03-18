@@ -1,29 +1,28 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
-# Installer extensions nécessaires
+# Installer les dépendances système
 RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
     libzip-dev \
     libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    zip \
-    unzip \
-    git \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql zip gd
+    libonig-dev \
+    libxml2-dev
 
-# Activer mod_rewrite pour Symfony
-RUN a2enmod rewrite
+# Installer extensions PHP
+RUN docker-php-ext-install zip gd pdo pdo_mysql
 
-# Copier projet
-COPY . /var/www/html
-
-WORKDIR /var/www/html
-
-# Installer composer
+# Installer Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN composer install --no-interaction --optimize-autoloader
+# Définir le dossier de travail
+WORKDIR /app
 
-# Config Apache pour Symfony
-RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+# Copier le projet
+COPY . .
+
+# Installer dépendances Symfony
+RUN composer install --optimize-autoloader --no-interaction
+
+# Lancer serveur
+CMD php -S 0.0.0.0:8000 -t public
