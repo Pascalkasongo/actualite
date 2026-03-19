@@ -77,29 +77,16 @@
   </div>
    <!-- Mobile menu -->
 <!-- Mobile menu -->
-<div id="mobile-menu" class="hidden md:hidden bg-red-700">
-
-    <div class="px-4 py-4">
-
-        <a href="{{ path('app_home') }}"
-           class="block text-white font-medium hover:bg-red-600 px-3 py-2 rounded mb-2">
-           Accueil
-        </a>
-
-        {% if app.user and is_granted('ROLE_ADMIN') %}
-          <a href="{{ path('app_actualite_index') }}"
-            class="block text-white font-medium hover:bg-red-600 px-3 py-2 rounded mb-2">
-            Actualités
-          </a>
-        {% endif %}
-
-      <div class="relative">
+<!-- Formation mobile -->
+<div>
 
     <!-- Bouton -->
-    <button id="formation-btn"
-        class="flex items-center gap-2 text-white font-medium hover:text-gray-200">
+    <button id="mobile-formation-btn"
+        class="w-full flex justify-between items-center text-white font-medium px-3 py-2 rounded hover:bg-red-600">
+
         Formation
-        <svg id="formation-arrow"
+
+        <svg id="mobile-formation-arrow"
             class="w-4 h-4 transition-transform duration-200"
             fill="none"
             stroke="currentColor"
@@ -109,18 +96,18 @@
         </svg>
     </button>
 
-    <!-- Dropdown -->
-    <div id="formation-dropdown"
-        class="absolute left-0 mt-2 w-44 bg-white rounded-lg shadow-lg hidden">
+    <!-- Sous-menu -->
+    <div id="mobile-formation-dropdown"
+        class="hidden flex flex-col ml-4 mt-2 space-y-2">
 
-        <a href="#"
-            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-            Enseignants
+        <a href="{{ path('app_enseignant') }}"
+           class="block text-white hover:bg-red-600 px-3 py-2 rounded">
+           Enseignants
         </a>
 
         <a href="#"
-            class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-            Étudiants
+           class="block text-white hover:bg-red-600 px-3 py-2 rounded">
+           Étudiants
         </a>
 
     </div>

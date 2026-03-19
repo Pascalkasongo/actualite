@@ -15,7 +15,7 @@
     });
     }
 </script>
-<script>
+<!-- <script>
 
 const btn = document.getElementById("formation-btn");
 const dropdown = document.getElementById("formation-dropdown");
@@ -29,6 +29,21 @@ btn.addEventListener("click", () => {
 
 });
 
+</script> -->
+
+<script>
+const mobileBtn = document.getElementById('mobile-formation-btn');
+const mobileMenu = document.getElementById('mobile-formation-dropdown');
+const mobileArrow = document.getElementById('mobile-formation-arrow');
+
+if (mobileBtn) {
+    mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+
+        // rotation flèche
+        mobileArrow.classList.toggle('rotate-180');
+    });
+}
 </script>
 
 </body>
