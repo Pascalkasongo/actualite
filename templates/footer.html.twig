@@ -6,45 +6,80 @@
 
 
 <script>
-    const button = document.getElementById('mobile-menu-button');
-    const menu = document.getElementById('mobile-menu');
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-    if(button){
-    button.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
+    const formationBtn = document.getElementById('formation-btn');
+    const formationDropdown = document.getElementById('formation-dropdown');
+    const formationArrow = document.getElementById('formation-arrow');
+
+    const mobileFormationBtn = document.getElementById('mobile-formation-btn');
+    const mobileFormationDropdown = document.getElementById('mobile-formation-dropdown');
+    const mobileFormationArrow = document.getElementById('mobile-formation-arrow');
+
+    const toggleElement = (button, menu, arrow = null) => {
+        const isHidden = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden', !isHidden);
+        button.setAttribute('aria-expanded', String(isHidden));
+
+        if (arrow) {
+            arrow.classList.toggle('rotate-180', isHidden);
+        }
+    };
+
+    mobileMenuButton?.addEventListener('click', () => {
+        toggleElement(mobileMenuButton, mobileMenu);
     });
-    }
-</script>
-<!-- <script>
 
-const btn = document.getElementById("formation-btn");
-const dropdown = document.getElementById("formation-dropdown");
-const arrow = document.getElementById("formation-arrow");
+    formationBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleElement(formationBtn, formationDropdown, formationArrow);
+    });
 
-btn.addEventListener("click", () => {
+    mobileFormationBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleElement(mobileFormationBtn, mobileFormationDropdown, mobileFormationArrow);
+    });
 
-    dropdown.classList.toggle("hidden");
+    document.addEventListener('click', (event) => {
+        const clickedInsideFormation = formationDropdown.contains(event.target) || formationBtn.contains(event.target);
+        const clickedInsideMobileFormation = mobileFormationDropdown.contains(event.target) || mobileFormationBtn.contains(event.target);
+        const clickedInsideMobileMenu = mobileMenu.contains(event.target) || mobileMenuButton.contains(event.target);
 
-    arrow.classList.toggle("rotate-180");
+        if (!clickedInsideFormation) {
+            formationDropdown.classList.add('hidden');
+            formationBtn.setAttribute('aria-expanded', 'false');
+            formationArrow.classList.remove('rotate-180');
+        }
 
+        if (!clickedInsideMobileFormation) {
+            mobileFormationDropdown.classList.add('hidden');
+            mobileFormationBtn.setAttribute('aria-expanded', 'false');
+            mobileFormationArrow.classList.remove('rotate-180');
+        }
+
+        if (!clickedInsideMobileMenu) {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+
+            formationDropdown.classList.add('hidden');
+            formationBtn.setAttribute('aria-expanded', 'false');
+            formationArrow.classList.remove('rotate-180');
+
+            mobileFormationDropdown.classList.add('hidden');
+            mobileFormationBtn.setAttribute('aria-expanded', 'false');
+            mobileFormationArrow.classList.remove('rotate-180');
+        }
+    });
 });
-
-</script> -->
-
-<script>
-const mobileBtn = document.getElementById('mobile-formation-btn');
-const mobileMenu = document.getElementById('mobile-formation-dropdown');
-const mobileArrow = document.getElementById('mobile-formation-arrow');
-
-if (mobileBtn) {
-    mobileBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-
-        // rotation flèche
-        mobileArrow.classList.toggle('rotate-180');
-    });
-}
 </script>
-
 </body>
 </html>
