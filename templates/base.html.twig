@@ -21,55 +21,63 @@
             </a>
 
             <!-- DESKTOP MENU -->
-            <div class="hidden md:flex items-center space-x-6">
+            <div class="hidden md:flex items-center">
 
-                <a href="{{ path('app_home') }}" class="text-white hover:text-gray-200">
-                    Accueil
-                </a>
+                <div class="flex items-center gap-8">
 
-                {% if app.user and is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('app_actualite_index') }}" class="text-white hover:text-gray-200">
-                        Actualités
+                    <a href="{{ path('app_home') }}"
+                      class="text-white hover:text-gray-200 font-medium transition">
+                        Accueil
                     </a>
-                {% endif %}
 
-                <!-- DROPDOWN -->
-                <div class="relative">
-                    <button id="formation-btn"
-                        class="flex items-center text-white hover:text-gray-200">
-
-                        Formation
-                        <svg id="arrow"
-                            class="w-4 h-4 ml-1 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-width="2" d="M19 9l-7 7-7-7"/>
-                        </svg>
-                    </button>
-
-                    <div id="dropdown"
-                        class="hidden absolute left-0 top-full mt-2 w-44 bg-white rounded shadow-lg z-50">
-
-                        <a href="{{ path('app_enseignant') }}"
-                           class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                           Enseignants
+                    {% if app.user and is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_actualite_index') }}"
+                          class="text-white hover:text-gray-200 font-medium transition">
+                            Actualités
                         </a>
+                    {% endif %}
 
-                        <a href="#"
-                           class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                           Étudiants
-                        </a>
+                    <!-- DROPDOWN -->
+                    <div class="relative">
+                        <button id="formation-btn"
+                            class="flex items-center gap-1 text-white hover:text-gray-200 font-medium transition">
+
+                            Formation
+                            <svg id="arrow"
+                                class="w-4 h-4 transition-transform"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+
+                        <div id="dropdown"
+                            class="hidden absolute left-0 top-full mt-3 w-48 bg-white rounded-lg shadow-lg z-50">
+
+                            <a href="{{ path('app_enseignant') }}"
+                              class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                              Enseignants
+                            </a>
+
+                            <a href="#"
+                              class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                              Étudiants
+                            </a>
+                        </div>
                     </div>
+
+                    <a href="https://bibliotheque-udbl.org/pmb/opac_css/"
+                      class="text-white hover:text-gray-200 font-medium transition">
+                        Bibliothèque
+                    </a>
+
+                    <a href="{{ path('app_apropos') }}"
+                      class="text-white hover:text-gray-200 font-medium transition">
+                        À propos
+                    </a>
+
                 </div>
 
-                <a href="https://bibliotheque-udbl.org/pmb/opac_css/" class="text-white hover:text-gray-200">
-                    Bibliothèque
-                </a>
-
-                <a href="{{ path('app_apropos') }}" class="text-white hover:text-gray-200">
-                    À propos
-                </a>
-
-            </div>
+</div>
 
             <!-- MOBILE BUTTON -->
             <button id="menu-btn" class="md:hidden text-white text-2xl">
